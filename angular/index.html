@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html class = "no-js" lang = "ja" ng-app = "myApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.1/angular.min.js"></script>
+    <script src="controller.js"></script>
+  </head>
+  <body>
+  <div ng-controller = "MyController">
+    <div>{{msg}}</div>
+
+    <p>今日は{{today | date: 'yyyy/MM/dd'}}</p>
+    <p>タイトル数は、{{ctmls.length}}</p>
+
+    
+    <h1>ng-repeatを使ってみる</h1>
+    タイトル名、価格を入力すると、検索結果に反映<br />
+    <input type = "text" ng-model = "query">
+    <table>
+      <tr><td>タイトル名</td><td>価格</td><td>発売日</td></tr>
+      <tr ng-repeat = "list in ctmls|filter:query">
+        <td>{{list.title}}</td>
+        <td>{{list.price | number}}円</td>
+        <td>{{list.published | date: 'yyyy年MM月dd日'}}</td>
+      </tr>
+    </table>
+  </div>
+  </body>
+</html>
